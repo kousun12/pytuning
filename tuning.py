@@ -56,6 +56,8 @@ class Tuning(object):
     """
     Return the frequency for a given semitone in the scale. Optionally provide an integer octave offset to shift the scale
     """
+    if semitone_index == 0 and octave_offset == 0:
+      return self.tonic_hz_raw
     dividend = int(semitone_index / len(self.normalized_ratios))
     octave = dividend + octave_offset
     degree = semitone_index % len(self.normalized_ratios)
