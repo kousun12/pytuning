@@ -1,11 +1,12 @@
 # pytuning
-musical tuning function used to create well tuned computers
+musical tuning function used to create well tuned computers. sister to [tuning-js](https://github.com/kousun12/tuning-js)
 
 ## Usage
 
 ```python
 from tuning import Tuning
 
+# initialize with either scale ratio strings or cent values, per the .scl spec
 basic = Tuning(['5/4', '233.9850002884625', '375.', '2'])
 
 print(basic.ratios())
