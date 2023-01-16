@@ -1,13 +1,12 @@
-from typing import Union, Tuple
-
+from typing import Union, Tuple, List
 
 class Tuning(object):
-  scale: list[str] = []
-  normalized_ratios: list[float] = []
+  scale: List[str] = []
+  normalized_ratios: List[float] = []
   tonic_directive: float = None
   tonic_hz_raw: float = 440.0
 
-  def __init__(self, scale: list[str], tonic_directive: Union[float, Tuple[float, int]] = None):
+  def __init__(self, scale: List[str], tonic_directive: Union[float, Tuple[float, int]] = None):
     """
     :param scale: A list of notes in the scale. Either a list of ratios or a list of cents. Per the .scl spec,
     if the element contains a decimal "." it is a cent value, otherwise it is a ratio.
@@ -22,7 +21,7 @@ class Tuning(object):
 
 
   @classmethod
-  def normalize_ratios(cls, scale: list[str]) -> list[float]:
+  def normalize_ratios(cls, scale: List[str]) -> List[float]:
     """
     :param scale: A list of notes in the scale. Either a list of ratios or a list of cents, per the .scl spec.
     :return: A list of floating point ratios for notes in the scale
@@ -40,13 +39,13 @@ class Tuning(object):
         return float(val)
     return list(map(parse, scale))
 
-  def ratios(self) -> list[float]:
+  def ratios(self) -> List[float]:
     """
     Return a list of normalized floating point ratios for the scale
     """
     return self.normalized_ratios
 
-  def frequencies(self, octave_offset: int = 0) -> list[float]:
+  def frequencies(self, octave_offset: int = 0) -> List[float]:
     """
     Return a list of frequencies for the scale. Optionally provide an integer octave offset to shift the scale
     """
@@ -65,7 +64,7 @@ class Tuning(object):
     return ratio * self.tonic_hz_raw * pow(2, octave)
 
   @classmethod
-  def tonic_hz(cls, tonic_directive: Union[float, Tuple[float, int], None], scale: list[str]) -> float:
+  def tonic_hz(cls, tonic_directive: Union[float, Tuple[float, int], None], scale: List[str]) -> float:
     """
     Return the frequency of the tonic for this scale
     """
