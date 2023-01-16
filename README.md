@@ -34,3 +34,5 @@ print(pinning.tonic_hz_raw)
 print(pinning.frequencies())
 # [352.0, 440.0, 528.0, 674.1527096117959]
 ```
+
+As a bonus you can hear the mythical [well ascending shepard](https://colab.research.google.com/drive/1iDOjyfbgq4mPUXI6wdC0uTIlL2gHlNuO#scrollTo=e4C4PYN13QKY).
